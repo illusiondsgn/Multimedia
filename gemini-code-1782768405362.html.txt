@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Rendimiento y Carga</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons for modern UI icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen p-6">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Header -->
+        <header class="flex justify-between items-center border-b border-gray-800 pb-4">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Dashboard de Operaciones</h1>
+                <p class="text-sm text-gray-400">Resumen de KPIs, Puntuación por Categoría y Carga de Equipo</p>
+            </div>
+            <div class="bg-gray-800 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 flex items-center gap-2">
+                <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i> Vista Mensual
+            </div>
+        </header>
+
+        <!-- Top Section: KPIs Grid -->
+        <section>
+            <h2 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                <i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-400"></i> Indicadores Clave de Rendimiento (KPIs)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                
+                <!-- Tareas -->
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Tareas</span>
+                    <div class="my-2">
+                        <div class="text-2xl font-bold">61 <span class="text-xs font-normal text-gray-400">/ 64 Meta</span></div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
+                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Completado
+                    </span>
+                </div>
+
+                <!-- Desempeño -->
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Desempeño</span>
+                    <div class="my-2">
+                        <div class="text-2xl font-bold text-emerald-400">95.3%</div>
+                        <div class="text-xs text-gray-400">Meta: 95%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
+                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Excelente
+                    </span>
+                </div>
+
+                <!-- Retraso -->
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Retraso</span>
+                    <div class="my-2">
+                        <div class="text-2xl font-bold text-rose-400">5</div>
+                        <div class="text-xs text-gray-400">Meta: &lt;2</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-rose-400">
+                        <span class="h-2 w-2 rounded-full bg-rose-400"></span> Excedido
+                    </span>
+                </div>
+
+                <!-- Promedio de revisiones -->
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Prom. Revisiones</span>
+                    <div class="my-2">
+                        <div class="text-2xl font-bold text-amber-400">3</div>
+                        <div class="text-xs text-gray-400">Meta: ≤2</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-amber-400">
+                        <span class="h-2 w-2 rounded-full bg-amber-400"></span> Atención
+                    </span>
+                </div>
+
+                <!-- Satisfacción del cliente -->
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Satisfacción</span>
+                    <div class="my-2">
+                        <div class="text-xl text-gray-400 italic">Sin datos</div>
+                        <div class="text-xs text-gray-500">Pendiente</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400">
+                        <span class="h-2 w-2 rounded-full bg-gray-400"></span> N/A
+                    </span>
+                </div>
+
+                <!-- Urgencias -->
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Urgencias</span>
+                    <div class="my-2">
+                        <div class="text-2xl font-bold">4 <span class="text-xs font-normal text-gray-400">/ 5 Meta</span></div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
+                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Bajo Control
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Bottom Section: Split Layout (Categories & Team Load) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Category Points Table -->
+            <section class="lg:col-span-1 bg-gray-800 rounded-xl border border-gray-700 p-5">
+                <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <i data-lucide="layers" class="w-5 h-5 text-indigo-400"></i> Matriz de Puntos por Categoría
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead>
+                            <tr class="border-b border-gray-700 text-gray-400">
+                                <th class="pb-2 font-medium">Categoría</th>
+                                <th class="pb-2 font-medium text-right">Diseño Fijo</th>
+                                <th class="pb-2 font-medium text-right">Sesión</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-700/50">
+                            <tr>
+                                <td class="py-2.5 font-bold text-indigo-400">AAA</td>
+                                <td class="py-2.5 text-right">7.0 pts</td>
+                                <td class="py-2.5 text-right text-gray-400">3.5 pts</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 font-bold text-indigo-400">AA</td>
+                                <td class="py-2.5 text-right">5.5 pts</td>
+                                <td class="py-2.5 text-right text-gray-400">3.5 pts</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 font-bold text-indigo-400">A</td>
+                                <td class="py-2.5 text-right">3.5 pts</td>
+                                <td class="py-2.5 text-right text-gray-400">2.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 font-bold text-indigo-400">B</td>
+                                <td class="py-2.5 text-right">2.0 pts</td>
+                                <td class="py-2.5 text-right text-gray-400">2.0 pts</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 font-bold text-indigo-400">C</td>
+                                <td class="py-2.5 text-right">1.0 pt</td>
+                                <td class="py-2.5 text-right text-gray-400">1.0 pt</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-[11px] text-gray-500 mt-4 italic">* Las sesiones se puntúan solo el mes correspondiente.</p>
+            </section>
+
+            <!-- Team Workload Tracker -->
+            <section class="lg:col-span-2 bg-gray-800 rounded-xl border border-gray-700 p-5">
+                <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <i data-lucide="users" class="w-5 h-5 text-indigo-400"></i> Estado de Carga de Trabajo del Equipo
+                </h2>
+                <div class="space-y-4">
+                    
+                    <!-- Edgar -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-sm">
+                            <span class="font-medium">Edgar <span class="text-xs text-gray-400 ml-2">(32 pts)</span></span>
+                            <span class="text-rose-400 font-semibold flex items-center gap-1.5">
+                                <span class="h-2 w-2 rounded-full bg-rose-500 animate-pulse"></span> 93% - Al Límite
+                            </span>
+                        </div>
+                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-rose-500 h-2.5 rounded-full" style="width: 93%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Antonio -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-sm">
+                            <span class="font-medium">Antonio <span class="text-xs text-gray-400 ml-2">(20 pts)</span></span>
+                            <span class="text-emerald-400 font-semibold flex items-center gap-1.5">
+                                <span class="h-2 w-2 rounded-full bg-emerald-400"></span> 57% - Óptimo
+                            </span>
+                        </div>
+                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 57%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Bere -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-sm">
+                            <span class="font-medium">Bere <span class="text-xs text-gray-400 ml-2">(18.5 pts)</span></span>
+                            <span class="text-emerald-400 font-semibold flex items-center gap-1.5">
+                                <span class="h-2 w-2 rounded-full bg-emerald-400"></span> 53% - Óptimo
+                            </span>
+                        </div>
+                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 53%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Paco -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-sm">
+                            <span class="font-medium">Paco <span class="text-xs text-gray-400 ml-2">(11 pts)</span></span>
+                            <span class="text-amber-400 font-semibold flex items-center gap-1.5">
+                                <span class="h-2 w-2 rounded-full bg-amber-400"></span> 31% - Bajo carga
+                            </span>
+                        </div>
+                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-amber-400 h-2.5 rounded-full" style="width: 31%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Kike -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-sm">
+                            <span class="font-medium">Kike <span class="text-xs text-gray-400 ml-2">(4 pts)</span></span>
+                            <span class="text-amber-400 font-semibold flex items-center gap-1.5">
+                                <span class="h-2 w-2 rounded-full bg-amber-400"></span> 11% - Bajo carga
+                            </span>
+                        </div>
+                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-amber-400 h-2.5 rounded-full" style="width: 11%"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
