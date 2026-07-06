@@ -12,7 +12,7 @@
 <body class="bg-gray-900 text-gray-100 font-sans min-h-screen p-6">
 
     <div class="max-w-7xl mx-auto space-y-6">
-        
+
         <!-- Header -->
         <header class="flex justify-between items-center border-b border-gray-800 pb-4">
             <div>
@@ -29,96 +29,15 @@
             <h2 class="text-lg font-semibold mb-3 flex items-center gap-2">
                 <i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-400"></i> Indicadores Clave de Rendimiento (KPIs)
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                
-                <!-- Tareas -->
-                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Tareas</span>
-                    <div class="my-2">
-                        <div class="text-2xl font-bold">85 <span class="text-xs font-normal text-gray-400">/ 84 Meta</span></div>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
-                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Óptimo
-                    </span>
-                </div>
-
-                <!-- Desempeño -->
-                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Desempeño</span>
-                    <div class="my-2">
-                        <div class="text-2xl font-bold text-emerald-400">98.8%</div>
-                        <div class="text-xs text-gray-400">Meta: 95%</div>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
-                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Óptimo
-                    </span>
-                </div>
-
-                <!-- En tiempo -->
-                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">En Tiempo</span>
-                    <div class="my-2">
-                        <div class="text-2xl font-bold text-emerald-400">94%</div>
-                        <div class="text-xs text-gray-400">Meta: 90%</div>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
-                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Óptimo
-                    </span>
-                </div>
-
-                <!-- Retraso -->
-                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Retraso</span>
-                    <div class="my-2">
-                        <div class="text-2xl font-bold text-rose-400">4</div>
-                        <div class="text-xs text-gray-400">Meta: &lt;2</div>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-rose-400">
-                        <span class="h-2 w-2 rounded-full bg-rose-400"></span> Acción Inmediata
-                    </span>
-                </div>
-
-                <!-- Promedio de revisiones -->
-                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Prom. Revisiones</span>
-                    <div class="my-2">
-                        <div class="text-2xl font-bold text-emerald-400">2</div>
-                        <div class="text-xs text-gray-400">Meta: ≤2</div>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
-                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Óptimo
-                    </span>
-                </div>
-
-                <!-- Satisfacción del cliente -->
-                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Satisfacción</span>
-                    <div class="my-2">
-                        <div class="text-xl text-gray-400 italic">Sin datos</div>
-                        <div class="text-xs text-gray-500">Pendiente</div>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
-                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Óptimo
-                    </span>
-                </div>
-
-                <!-- Urgencias -->
-                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Urgencias</span>
-                    <div class="my-2">
-                        <div class="text-2xl font-bold">2 <span class="text-xs font-normal text-gray-400">/ 5 Meta</span></div>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
-                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Óptimo
-                    </span>
-                </div>
-
+            <p class="text-[11px] text-gray-500 mb-3 italic">Edita cualquier número (valor o meta) directamente en la tarjeta — el semáforo de color se recalcula solo.</p>
+            <div id="kpi-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Las tarjetas de KPI se generan automáticamente con JS, ver KPI_CONFIG abajo -->
             </div>
         </section>
 
         <!-- Bottom Section: Split Layout (Categories & Team Load) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            
+
             <!-- Category Points Table -->
             <section class="lg:col-span-1 bg-gray-800 rounded-xl border border-gray-700 p-5">
                 <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -170,82 +89,252 @@
                 <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
                     <i data-lucide="users" class="w-5 h-5 text-indigo-400"></i> Estado de Carga de Trabajo del Equipo
                 </h2>
-                <div class="space-y-4">
-                    
-                    <!-- Edgar -->
-                    <div class="space-y-1.5">
-                        <div class="flex justify-between text-sm">
-                            <span class="font-medium">Edgar <span class="text-xs text-gray-400 ml-2">(32 pts)</span></span>
-                            <span class="text-rose-400 font-semibold flex items-center gap-1.5">
-                                <span class="h-2 w-2 rounded-full bg-rose-500 animate-pulse"></span> 93% - Al Límite
-                            </span>
-                        </div>
-                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
-                            <div class="bg-rose-500 h-2.5 rounded-full" style="width: 93%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Antonio -->
-                    <div class="space-y-1.5">
-                        <div class="flex justify-between text-sm">
-                            <span class="font-medium">Antonio <span class="text-xs text-gray-400 ml-2">(20 pts)</span></span>
-                            <span class="text-emerald-400 font-semibold flex items-center gap-1.5">
-                                <span class="h-2 w-2 rounded-full bg-emerald-400"></span> 57% - Óptimo
-                            </span>
-                        </div>
-                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
-                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 57%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Bere -->
-                    <div class="space-y-1.5">
-                        <div class="flex justify-between text-sm">
-                            <span class="font-medium">Bere <span class="text-xs text-gray-400 ml-2">(18.5 pts)</span></span>
-                            <span class="text-emerald-400 font-semibold flex items-center gap-1.5">
-                                <span class="h-2 w-2 rounded-full bg-emerald-400"></span> 53% - Óptimo
-                            </span>
-                        </div>
-                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
-                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 53%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Paco -->
-                    <div class="space-y-1.5">
-                        <div class="flex justify-between text-sm">
-                            <span class="font-medium">Paco <span class="text-xs text-gray-400 ml-2">(11 pts)</span></span>
-                            <span class="text-amber-400 font-semibold flex items-center gap-1.5">
-                                <span class="h-2 w-2 rounded-full bg-amber-400"></span> 31% - Bajo carga
-                            </span>
-                        </div>
-                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
-                            <div class="bg-amber-400 h-2.5 rounded-full" style="width: 31%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Kike -->
-                    <div class="space-y-1.5">
-                        <div class="flex justify-between text-sm">
-                            <span class="font-medium">Kike <span class="text-xs text-gray-400 ml-2">(4 pts)</span></span>
-                            <span class="text-amber-400 font-semibold flex items-center gap-1.5">
-                                <span class="h-2 w-2 rounded-full bg-amber-400"></span> 11% - Bajo carga
-                            </span>
-                        </div>
-                        <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
-                            <div class="bg-amber-400 h-2.5 rounded-full" style="width: 11%"></div>
-                        </div>
-                    </div>
-
+                <p class="text-[11px] text-gray-500 mb-4 italic">Edita los puntos de cada persona — el % y el semáforo se ajustan solos según la capacidad máxima definida en TEAM_CONFIG.</p>
+                <div id="team-list" class="space-y-4">
+                    <!-- Las filas del equipo se generan automáticamente con JS, ver TEAM_CONFIG abajo -->
                 </div>
             </section>
 
         </div>
     </div>
 
-    <!-- Initialize Lucide Icons -->
     <script>
         lucide.createIcons();
+    </script>
+
+    <!-- ============================================================
+         ZONA DE CONFIGURACIÓN — edita aquí los valores por defecto.
+         Los colores de semáforo se calculan solos con base en
+         "meta" y "direccion" (o "invertido") — NO los edites a mano.
+         ============================================================ -->
+    <script>
+
+        // ---- 1) KPIs -------------------------------------------------
+        // direccion: 'mayor'  -> más alto es mejor (ej. Desempeño)
+        //            'menor'  -> más bajo es mejor (ej. Retraso)
+        // margenAtencion: qué tan lejos de la meta todavía se considera
+        //   "Atención" (amarillo) antes de pasar a "Acción Inmediata" (rojo).
+        //   Ej: direccion 'mayor', margenAtencion 0.95 => si el valor cae
+        //   por debajo del 95% de la meta, ya es rojo.
+        //   Ej: direccion 'menor', margenAtencion 1.5  => si el valor supera
+        //   1.5x la meta, ya es rojo.
+        const KPI_CONFIG = [
+            { id: 'tareas',       label: 'Tareas',           tipo: 'auto', valor: 85,   meta: 84, unidad: '',  direccion: 'mayor', margenAtencion: 0.95, formato: 'fraccion' },
+            { id: 'desempeno',    label: 'Desempeño',        tipo: 'auto', valor: 98.8, meta: 95, unidad: '%', direccion: 'mayor', margenAtencion: 0.95, formato: 'debajo' },
+            { id: 'entiempo',     label: 'En Tiempo',        tipo: 'auto', valor: 94,   meta: 90, unidad: '%', direccion: 'mayor', margenAtencion: 0.95, formato: 'debajo' },
+            { id: 'retraso',      label: 'Retraso',          tipo: 'auto', valor: 4,    meta: 2,  unidad: '',  direccion: 'menor', margenAtencion: 1.5,  formato: 'debajo', metaPrefijo: '<' },
+            { id: 'revisiones',   label: 'Prom. Revisiones', tipo: 'auto', valor: 2,    meta: 2,  unidad: '',  direccion: 'menor', margenAtencion: 1.5,  formato: 'debajo', metaPrefijo: '≤' },
+            { id: 'satisfaccion', label: 'Satisfacción',     tipo: 'manual', estado: 'optimo', textoValor: 'Sin datos', textoSub: 'Pendiente' },
+            { id: 'urgencias',    label: 'Urgencias',        tipo: 'auto', valor: 2,    meta: 5,  unidad: '',  direccion: 'menor', margenAtencion: 1.5,  formato: 'fraccion' },
+        ];
+
+        // ---- 2) Equipo / Carga de trabajo -----------------------------
+        // capacidadMax = puntos que equivalen al 100% de carga.
+        // umbralAlLimite / umbralBajaCarga = % que definen el semáforo.
+        const TEAM_CONFIG = {
+            capacidadMax: 35,
+            umbralAlLimite: 85,   // % en o por encima de esto => rojo "Al Límite"
+            umbralBajaCarga: 40,  // % por debajo de esto => amarillo "Bajo carga"
+            personas: [
+                { id: 'edgar',   nombre: 'Edgar',   puntos: 32 },
+                { id: 'antonio', nombre: 'Antonio', puntos: 20 },
+                { id: 'bere',    nombre: 'Bere',    puntos: 18.5 },
+                { id: 'paco',    nombre: 'Paco',    puntos: 11 },
+                { id: 'kike',    nombre: 'Kike',    puntos: 4 },
+            ]
+        };
+
+        // ============================================================
+        // MOTOR — no necesitas tocar nada de aquí para abajo.
+        // ============================================================
+
+        const ESTADOS = {
+            optimo:  { color: 'emerald', texto: 'Óptimo' },
+            atencion:{ color: 'amber',   texto: 'Atención' },
+            accion:  { color: 'rose',    texto: 'Acción Inmediata' },
+        };
+
+        function calcularEstadoKPI(cfg) {
+            if (cfg.tipo === 'manual') return cfg.estado;
+            const { valor, meta, direccion, margenAtencion } = cfg;
+            if (direccion === 'mayor') {
+                if (valor >= meta) return 'optimo';
+                if (valor >= meta * margenAtencion) return 'atencion';
+                return 'accion';
+            } else {
+                if (valor <= meta) return 'optimo';
+                if (valor <= meta * margenAtencion) return 'atencion';
+                return 'accion';
+            }
+        }
+
+        function renderKPICard(cfg) {
+            const estadoKey = calcularEstadoKPI(cfg);
+            const { color, texto } = ESTADOS[estadoKey];
+
+            if (cfg.tipo === 'manual') {
+                return `
+                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">${cfg.label}</span>
+                    <div class="my-2">
+                        <div class="text-xl text-gray-400 italic">${cfg.textoValor}</div>
+                        <div class="text-xs text-gray-500">${cfg.textoSub}</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-${color}-400">
+                        <span class="h-2 w-2 rounded-full bg-${color}-400"></span> ${texto}
+                    </span>
+                </div>`;
+            }
+
+            const metaTexto = (cfg.metaPrefijo || '') + cfg.meta;
+            let valorHTML;
+            if (cfg.formato === 'fraccion') {
+                valorHTML = `
+                    <div id="valuewrap-${cfg.id}" class="text-2xl font-bold">
+                        <input type="number" step="any" value="${cfg.valor}" data-kpi="${cfg.id}" data-campo="valor"
+                            class="kpi-input bg-gray-700/40 rounded w-16 text-right px-1 focus:outline-none focus:ring-1 focus:ring-indigo-400" />${cfg.unidad}
+                        <span class="text-xs font-normal text-gray-400">/
+                            <input type="number" step="any" value="${cfg.meta}" data-kpi="${cfg.id}" data-campo="meta"
+                                class="kpi-input bg-transparent w-10 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" /> Meta
+                        </span>
+                    </div>`;
+            } else {
+                valorHTML = `
+                    <div id="valuewrap-${cfg.id}" class="text-2xl font-bold text-${color}-400">
+                        <input type="number" step="any" value="${cfg.valor}" data-kpi="${cfg.id}" data-campo="valor"
+                            class="kpi-input bg-transparent w-16 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" />${cfg.unidad}
+                    </div>
+                    <div class="text-xs text-gray-400">Meta: ${cfg.metaPrefijo || ''}
+                        <input type="number" step="any" value="${cfg.meta}" data-kpi="${cfg.id}" data-campo="meta"
+                            class="kpi-input bg-transparent w-10 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" />${cfg.unidad}
+                    </div>`;
+            }
+
+            return `
+            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between" id="card-${cfg.id}">
+                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">${cfg.label}</span>
+                <div class="my-2">${valorHTML}</div>
+                <span id="status-${cfg.id}" class="inline-flex items-center gap-1.5 text-xs font-medium text-${color}-400">
+                    <span class="h-2 w-2 rounded-full bg-${color}-400"></span> ${texto}
+                </span>
+            </div>`;
+        }
+
+        function actualizarKPICard(id) {
+            const cfg = KPI_CONFIG.find(k => k.id === id);
+            if (!cfg || cfg.tipo === 'manual') return;
+            const estadoKey = calcularEstadoKPI(cfg);
+            const { color, texto } = ESTADOS[estadoKey];
+
+            const statusEl = document.getElementById(`status-${id}`);
+            if (statusEl) {
+                statusEl.className = `inline-flex items-center gap-1.5 text-xs font-medium text-${color}-400`;
+                statusEl.innerHTML = `<span class="h-2 w-2 rounded-full bg-${color}-400"></span> ${texto}`;
+            }
+            if (cfg.formato === 'debajo') {
+                const valueWrap = document.getElementById(`valuewrap-${id}`);
+                if (valueWrap) {
+                    valueWrap.className = `text-2xl font-bold text-${color}-400`;
+                }
+            }
+        }
+
+        function renderKPIGrid() {
+            const grid = document.getElementById('kpi-grid');
+            grid.innerHTML = KPI_CONFIG.map(renderKPICard).join('');
+        }
+
+        function calcularEstadoEquipo(pct) {
+            if (pct >= TEAM_CONFIG.umbralAlLimite) return 'accion';
+            if (pct < TEAM_CONFIG.umbralBajaCarga) return 'atencion';
+            return 'optimo';
+        }
+
+        function textoEstadoEquipo(estadoKey) {
+            if (estadoKey === 'accion') return 'Al Límite';
+            if (estadoKey === 'atencion') return 'Bajo carga';
+            return 'Óptimo';
+        }
+
+        function renderTeamRow(persona) {
+            const pct = Math.min(100, Math.round((persona.puntos / TEAM_CONFIG.capacidadMax) * 100));
+            const estadoKey = calcularEstadoEquipo(pct);
+            const color = ESTADOS[estadoKey].color;
+            const texto = textoEstadoEquipo(estadoKey);
+            const pulse = estadoKey === 'accion' ? 'animate-pulse' : '';
+
+            return `
+            <div class="space-y-1.5" id="team-${persona.id}">
+                <div class="flex justify-between text-sm">
+                    <span class="font-medium">${persona.nombre}
+                        <span class="text-xs text-gray-400 ml-2">(
+                            <input type="number" step="any" value="${persona.puntos}" data-team="${persona.id}"
+                                class="team-input bg-transparent w-12 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" /> pts)
+                        </span>
+                    </span>
+                    <span id="teamstatus-${persona.id}" class="text-${color}-400 font-semibold flex items-center gap-1.5">
+                        <span class="h-2 w-2 rounded-full bg-${color}-400 ${pulse}"></span> ${pct}% - ${texto}
+                    </span>
+                </div>
+                <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
+                    <div id="teambar-${persona.id}" class="bg-${color}-400 h-2.5 rounded-full transition-all duration-300" style="width:${pct}%"></div>
+                </div>
+            </div>`;
+        }
+
+        function actualizarTeamRow(id) {
+            const persona = TEAM_CONFIG.personas.find(p => p.id === id);
+            if (!persona) return;
+            const pct = Math.min(100, Math.round((persona.puntos / TEAM_CONFIG.capacidadMax) * 100));
+            const estadoKey = calcularEstadoEquipo(pct);
+            const color = ESTADOS[estadoKey].color;
+            const texto = textoEstadoEquipo(estadoKey);
+            const pulse = estadoKey === 'accion' ? 'animate-pulse' : '';
+
+            const statusEl = document.getElementById(`teamstatus-${id}`);
+            if (statusEl) {
+                statusEl.className = `text-${color}-400 font-semibold flex items-center gap-1.5`;
+                statusEl.innerHTML = `<span class="h-2 w-2 rounded-full bg-${color}-400 ${pulse}"></span> ${pct}% - ${texto}`;
+            }
+            const barEl = document.getElementById(`teambar-${id}`);
+            if (barEl) {
+                barEl.className = `bg-${color}-400 h-2.5 rounded-full transition-all duration-300`;
+                barEl.style.width = `${pct}%`;
+            }
+        }
+
+        function renderTeamList() {
+            const list = document.getElementById('team-list');
+            list.innerHTML = TEAM_CONFIG.personas.map(renderTeamRow).join('');
+        }
+
+        // Delegación de eventos: escucha cambios en los inputs sin
+        // perder el foco al escribir (solo se actualizan colores/textos).
+        document.getElementById('kpi-grid').addEventListener('input', (e) => {
+            if (!e.target.matches('.kpi-input')) return;
+            const id = e.target.dataset.kpi;
+            const campo = e.target.dataset.campo;
+            const cfg = KPI_CONFIG.find(k => k.id === id);
+            const val = parseFloat(e.target.value);
+            if (cfg && !isNaN(val)) {
+                cfg[campo] = val;
+                actualizarKPICard(id);
+            }
+        });
+
+        document.getElementById('team-list').addEventListener('input', (e) => {
+            if (!e.target.matches('.team-input')) return;
+            const id = e.target.dataset.team;
+            const persona = TEAM_CONFIG.personas.find(p => p.id === id);
+            const val = parseFloat(e.target.value);
+            if (persona && !isNaN(val)) {
+                persona.puntos = val;
+                actualizarTeamRow(id);
+            }
+        });
+
+        renderKPIGrid();
+        renderTeamList();
     </script>
 </body>
 </html>
