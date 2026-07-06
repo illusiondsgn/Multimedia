@@ -4,34 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Multimedia</title>
-    <!-- Tailwind CSS CDN for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons for modern UI icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="bg-gray-900 text-gray-100 font-sans min-h-screen p-6">
 
-    <div class="max-w-7xl mx-auto space-y-6">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"IBM Plex Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts: Space Grotesk (display) + IBM Plex Mono (data/labels) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #0a0e14;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 34px 34px;
+            background-position: -1px -1px;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .kpi-card {
+            animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
+        .live-dot { animation: livePulse 1.8s ease-in-out infinite; }
+    </style>
+</head>
+<body class="text-gray-100 font-sans min-h-screen p-6 md:p-10">
+
+    <div class="max-w-7xl mx-auto space-y-8">
 
         <!-- Header -->
-        <header class="flex justify-between items-center border-b border-gray-800 pb-4">
-            <div>
-                <h1 class="text-2xl font-bold tracking-tight">Dashboard Multimedia</h1>
-                <p class="text-sm text-gray-400">Resumen de Indicadores Clave de Rendimiento (KPIs)</p>
-            </div>
-            <div class="bg-gray-800 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 flex items-center gap-2">
-                <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i> Vista Mensual
+        <header class="relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-r from-[#111722] to-[#0d1219] p-6 md:p-8">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="relative flex h-2 w-2">
+                            <span class="live-dot absolute inline-flex h-full w-full rounded-full bg-emerald-400"></span>
+                        </span>
+                        <span class="text-[11px] font-mono uppercase tracking-[0.25em] text-emerald-400">Monitoreo en vivo</span>
+                    </div>
+                    <h1 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-white">Dashboard Multimedia</h1>
+                    <p class="text-sm text-gray-400 mt-1 font-mono">Indicadores clave de rendimiento — panel de control</p>
+                </div>
+                <div class="bg-white/[0.04] border border-white/10 px-4 py-2.5 rounded-xl text-sm font-mono text-gray-300 flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i> Vista Mensual
+                </div>
             </div>
         </header>
 
-        <!-- Top Section: KPIs Grid -->
+        <!-- KPI Grid -->
         <section>
-            <h2 class="text-lg font-semibold mb-3 flex items-center gap-2">
-                <i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-400"></i> Indicadores Clave de Rendimiento (KPIs)
-            </h2>
-            <p class="text-[11px] text-gray-500 mb-3 italic">Edita cualquier número (valor o meta) directamente en la tarjeta — el semáforo de color se recalcula solo.</p>
-            <div id="kpi-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <!-- Las tarjetas de KPI se generan automáticamente con JS, ver KPI_CONFIG abajo -->
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                <h2 class="text-lg font-display font-semibold flex items-center gap-2 text-white">
+                    <i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-400"></i> Indicadores Clave de Rendimiento
+                </h2>
+                <p class="text-[11px] text-gray-500 font-mono italic">Edita cualquier valor o meta — el semáforo se recalcula solo</p>
+            </div>
+            <div id="kpi-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Tarjetas generadas por JS — ver KPI_CONFIG abajo -->
             </div>
         </section>
 
@@ -44,19 +97,14 @@
     <!-- ============================================================
          ZONA DE CONFIGURACIÓN — edita aquí los valores por defecto.
          Los colores de semáforo se calculan solos con base en
-         "meta" y "direccion" (o "invertido") — NO los edites a mano.
+         "meta" y "direccion" — NO los edites a mano.
          ============================================================ -->
     <script>
 
-        // ---- 1) KPIs -------------------------------------------------
-        // direccion: 'mayor'  -> más alto es mejor (ej. Desempeño)
-        //            'menor'  -> más bajo es mejor (ej. Retraso)
+        // direccion: 'mayor' -> más alto es mejor (ej. Desempeño)
+        //            'menor' -> más bajo es mejor (ej. Retraso)
         // margenAtencion: qué tan lejos de la meta todavía se considera
         //   "Atención" (amarillo) antes de pasar a "Acción Inmediata" (rojo).
-        //   Ej: direccion 'mayor', margenAtencion 0.95 => si el valor cae
-        //   por debajo del 95% de la meta, ya es rojo.
-        //   Ej: direccion 'menor', margenAtencion 1.5  => si el valor supera
-        //   1.5x la meta, ya es rojo.
         const KPI_CONFIG = [
             { id: 'tareas',       label: 'Tareas',           tipo: 'auto', valor: 85,   meta: 84, unidad: '',  direccion: 'mayor', margenAtencion: 0.95, formato: 'fraccion' },
             { id: 'desempeno',    label: 'Desempeño',        tipo: 'auto', valor: 99,   meta: 95, unidad: '%', direccion: 'mayor', margenAtencion: 0.95, formato: 'debajo' },
@@ -72,10 +120,11 @@
         // ============================================================
 
         const ESTADOS = {
-            optimo:  { color: 'emerald', texto: 'Óptimo' },
-            atencion:{ color: 'amber',   texto: 'Atención' },
-            accion:  { color: 'rose',    texto: 'Acción Inmediata' },
+            optimo:   { hex: '#10b981', glow: 'rgba(16,185,129,0.55)',  texto: 'Óptimo' },
+            atencion: { hex: '#f59e0b', glow: 'rgba(245,158,11,0.55)', texto: 'Atención' },
+            accion:   { hex: '#f43f5e', glow: 'rgba(244,63,94,0.6)',   texto: 'Acción Inmediata' },
         };
+        const ORDEN_SEMAFORO = ['accion', 'atencion', 'optimo']; // rojo, amarillo, verde (de arriba a abajo)
 
         function calcularEstadoKPI(cfg) {
             if (cfg.tipo === 'manual') return cfg.estado;
@@ -91,57 +140,74 @@
             }
         }
 
-        function renderKPICard(cfg) {
+        function renderSemaforo(activeKey) {
+            return `<div class="flex flex-col gap-1.5">` + ORDEN_SEMAFORO.map(key => {
+                const activo = key === activeKey;
+                const hex = ESTADOS[key].hex;
+                const estilo = activo
+                    ? `background:${hex}; box-shadow:0 0 9px 2px ${ESTADOS[key].glow};`
+                    : `background:${hex}; opacity:0.18;`;
+                return `<span class="block w-2.5 h-2.5 rounded-full transition-all duration-300" style="${estilo}"></span>`;
+            }).join('') + `</div>`;
+        }
+
+        function renderKPICard(cfg, index) {
             const estadoKey = calcularEstadoKPI(cfg);
-            const { color, texto } = ESTADOS[estadoKey];
+            const estado = ESTADOS[estadoKey];
+            const delay = `${index * 70}ms`;
+            const baseCardClasses = "kpi-card relative bg-gradient-to-b from-[#141b26] to-[#0e131b] border border-white/5 rounded-2xl p-5 md:p-6 flex flex-col justify-between overflow-hidden transition-transform duration-300 hover:-translate-y-1";
 
             if (cfg.tipo === 'manual') {
                 return `
-                <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">${cfg.label}</span>
-                    <div class="my-2">
-                        <div class="text-xl text-gray-400 italic">${cfg.textoValor}</div>
-                        <div class="text-xs text-gray-500">${cfg.textoSub}</div>
+                <div class="${baseCardClasses}" style="border-left:4px solid ${estado.hex}; animation-delay:${delay};">
+                    <div id="blob-${cfg.id}" class="absolute -right-6 -top-6 w-24 h-24 rounded-full blur-2xl opacity-20 pointer-events-none" style="background:${estado.hex}"></div>
+                    <div class="flex items-start justify-between relative">
+                        <span class="text-[11px] font-mono font-semibold text-gray-400 uppercase tracking-[0.15em]">${cfg.label}</span>
+                        <div id="light-${cfg.id}">${renderSemaforo(estadoKey)}</div>
                     </div>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-${color}-400">
-                        <span class="h-2 w-2 rounded-full bg-${color}-400"></span> ${texto}
-                    </span>
+                    <div class="my-3 relative">
+                        <div class="font-display text-lg text-gray-500 italic">${cfg.textoValor}</div>
+                        <div class="text-xs text-gray-600 font-mono mt-0.5">${cfg.textoSub}</div>
+                    </div>
+                    <div id="status-${cfg.id}" class="text-xs font-mono font-semibold relative" style="color:${estado.hex}">${estado.texto}</div>
                 </div>`;
             }
 
-            const metaTexto = (cfg.metaPrefijo || '') + cfg.meta;
-            const unidadValor = cfg.unidad ? `<span class="ml-1.5">${cfg.unidad}</span>` : '';
-            const unidadMeta = cfg.unidad ? `<span class="ml-1">${cfg.unidad}</span>` : '';
+            const unidadValor = cfg.unidad ? `<span class="text-lg ml-1 align-top">${cfg.unidad}</span>` : '';
+            const unidadMeta = cfg.unidad ? `<span class="ml-0.5">${cfg.unidad}</span>` : '';
             let valorHTML;
+
             if (cfg.formato === 'fraccion') {
                 valorHTML = `
-                    <div id="valuewrap-${cfg.id}" class="text-2xl font-bold">
+                    <div id="valuewrap-${cfg.id}" class="font-mono text-4xl font-bold text-gray-100">
                         <input type="number" step="1" value="${Math.round(cfg.valor)}" data-kpi="${cfg.id}" data-campo="valor"
-                            class="kpi-input bg-gray-700/40 rounded w-16 text-right px-1 focus:outline-none focus:ring-1 focus:ring-indigo-400" />${unidadValor}
-                        <span class="text-xs font-normal text-gray-400 ml-1.5">/
+                            class="kpi-input bg-white/5 rounded-lg w-20 text-right px-2 py-0.5 focus:outline-none focus:ring-1 focus:ring-indigo-400" />${unidadValor}
+                        <span class="text-sm font-mono font-normal text-gray-500 ml-1">/
                             <input type="number" step="1" value="${Math.round(cfg.meta)}" data-kpi="${cfg.id}" data-campo="meta"
-                                class="kpi-input bg-transparent w-10 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" /> Meta
+                                class="kpi-input bg-transparent w-10 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" /> meta
                         </span>
                     </div>`;
             } else {
                 valorHTML = `
-                    <div id="valuewrap-${cfg.id}" class="text-2xl font-bold text-${color}-400">
+                    <div id="valuewrap-${cfg.id}" class="font-mono text-4xl font-bold" style="color:${estado.hex}">
                         <input type="number" step="1" value="${Math.round(cfg.valor)}" data-kpi="${cfg.id}" data-campo="valor"
-                            class="kpi-input bg-transparent w-16 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" />${unidadValor}
+                            class="kpi-input bg-transparent w-20 focus:outline-none border-b border-dashed border-white/20 focus:border-white/60" />${unidadValor}
                     </div>
-                    <div class="text-xs text-gray-400 mt-1">Meta: ${cfg.metaPrefijo || ''}
+                    <div class="text-xs text-gray-500 font-mono mt-1">Meta: ${cfg.metaPrefijo || ''}
                         <input type="number" step="1" value="${Math.round(cfg.meta)}" data-kpi="${cfg.id}" data-campo="meta"
                             class="kpi-input bg-transparent w-10 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" />${unidadMeta}
                     </div>`;
             }
 
             return `
-            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 flex flex-col justify-between" id="card-${cfg.id}">
-                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">${cfg.label}</span>
-                <div class="my-2">${valorHTML}</div>
-                <span id="status-${cfg.id}" class="inline-flex items-center gap-1.5 text-xs font-medium text-${color}-400">
-                    <span class="h-2 w-2 rounded-full bg-${color}-400"></span> ${texto}
-                </span>
+            <div class="${baseCardClasses}" id="card-${cfg.id}" style="border-left:4px solid ${estado.hex}; animation-delay:${delay};">
+                <div id="blob-${cfg.id}" class="absolute -right-6 -top-6 w-24 h-24 rounded-full blur-2xl opacity-20 pointer-events-none" style="background:${estado.hex}"></div>
+                <div class="flex items-start justify-between relative">
+                    <span class="text-[11px] font-mono font-semibold text-gray-400 uppercase tracking-[0.15em]">${cfg.label}</span>
+                    <div id="light-${cfg.id}">${renderSemaforo(estadoKey)}</div>
+                </div>
+                <div class="my-3 relative">${valorHTML}</div>
+                <div id="status-${cfg.id}" class="text-xs font-mono font-semibold relative" style="color:${estado.hex}">${estado.texto}</div>
             </div>`;
         }
 
@@ -149,24 +215,32 @@
             const cfg = KPI_CONFIG.find(k => k.id === id);
             if (!cfg || cfg.tipo === 'manual') return;
             const estadoKey = calcularEstadoKPI(cfg);
-            const { color, texto } = ESTADOS[estadoKey];
+            const estado = ESTADOS[estadoKey];
+
+            const cardEl = document.getElementById(`card-${id}`);
+            if (cardEl) cardEl.style.borderLeft = `4px solid ${estado.hex}`;
+
+            const blobEl = document.getElementById(`blob-${id}`);
+            if (blobEl) blobEl.style.background = estado.hex;
+
+            const lightEl = document.getElementById(`light-${id}`);
+            if (lightEl) lightEl.innerHTML = renderSemaforo(estadoKey);
 
             const statusEl = document.getElementById(`status-${id}`);
             if (statusEl) {
-                statusEl.className = `inline-flex items-center gap-1.5 text-xs font-medium text-${color}-400`;
-                statusEl.innerHTML = `<span class="h-2 w-2 rounded-full bg-${color}-400"></span> ${texto}`;
+                statusEl.style.color = estado.hex;
+                statusEl.textContent = estado.texto;
             }
+
             if (cfg.formato === 'debajo') {
                 const valueWrap = document.getElementById(`valuewrap-${id}`);
-                if (valueWrap) {
-                    valueWrap.className = `text-2xl font-bold text-${color}-400`;
-                }
+                if (valueWrap) valueWrap.style.color = estado.hex;
             }
         }
 
         function renderKPIGrid() {
             const grid = document.getElementById('kpi-grid');
-            grid.innerHTML = KPI_CONFIG.map(renderKPICard).join('');
+            grid.innerHTML = KPI_CONFIG.map((cfg, i) => renderKPICard(cfg, i)).join('');
         }
 
         // Delegación de eventos: escucha cambios en los inputs sin
