@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Rendimiento y Carga</title>
+    <title>Dashboard Multimedia</title>
     <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons for modern UI icons -->
@@ -16,8 +16,8 @@
         <!-- Header -->
         <header class="flex justify-between items-center border-b border-gray-800 pb-4">
             <div>
-                <h1 class="text-2xl font-bold tracking-tight">Dashboard de Operaciones</h1>
-                <p class="text-sm text-gray-400">Resumen de KPIs, Puntuación por Categoría y Carga de Equipo</p>
+                <h1 class="text-2xl font-bold tracking-tight">Dashboard Multimedia</h1>
+                <p class="text-sm text-gray-400">Resumen de Indicadores Clave de Rendimiento (KPIs)</p>
             </div>
             <div class="bg-gray-800 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 flex items-center gap-2">
                 <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i> Vista Mensual
@@ -35,67 +35,6 @@
             </div>
         </section>
 
-        <!-- Bottom Section: Split Layout (Categories & Team Load) -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-            <!-- Category Points Table -->
-            <section class="lg:col-span-1 bg-gray-800 rounded-xl border border-gray-700 p-5">
-                <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <i data-lucide="layers" class="w-5 h-5 text-indigo-400"></i> Matriz de Puntos por Categoría
-                </h2>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm">
-                        <thead>
-                            <tr class="border-b border-gray-700 text-gray-400">
-                                <th class="pb-2 font-medium">Categoría</th>
-                                <th class="pb-2 font-medium text-right">Diseño Fijo</th>
-                                <th class="pb-2 font-medium text-right">Sesión</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-700/50">
-                            <tr>
-                                <td class="py-2.5 font-bold text-indigo-400">AAA</td>
-                                <td class="py-2.5 text-right">7.0 pts</td>
-                                <td class="py-2.5 text-right text-gray-400">3.5 pts</td>
-                            </tr>
-                            <tr>
-                                <td class="py-2.5 font-bold text-indigo-400">AA</td>
-                                <td class="py-2.5 text-right">5.5 pts</td>
-                                <td class="py-2.5 text-right text-gray-400">3.5 pts</td>
-                            </tr>
-                            <tr>
-                                <td class="py-2.5 font-bold text-indigo-400">A</td>
-                                <td class="py-2.5 text-right">3.5 pts</td>
-                                <td class="py-2.5 text-right text-gray-400">2.0 pts</td>
-                            </tr>
-                            <tr>
-                                <td class="py-2.5 font-bold text-indigo-400">B</td>
-                                <td class="py-2.5 text-right">2.0 pts</td>
-                                <td class="py-2.5 text-right text-gray-400">2.0 pts</td>
-                            </tr>
-                            <tr>
-                                <td class="py-2.5 font-bold text-indigo-400">C</td>
-                                <td class="py-2.5 text-right">1.0 pt</td>
-                                <td class="py-2.5 text-right text-gray-400">1.0 pt</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p class="text-[11px] text-gray-500 mt-4 italic">* Las sesiones se puntúan solo el mes correspondiente.</p>
-            </section>
-
-            <!-- Team Workload Tracker -->
-            <section class="lg:col-span-2 bg-gray-800 rounded-xl border border-gray-700 p-5">
-                <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <i data-lucide="users" class="w-5 h-5 text-indigo-400"></i> Estado de Carga de Trabajo del Equipo
-                </h2>
-                <p class="text-[11px] text-gray-500 mb-4 italic">Edita los puntos de cada persona — el % y el semáforo se ajustan solos según la capacidad máxima definida en TEAM_CONFIG.</p>
-                <div id="team-list" class="space-y-4">
-                    <!-- Las filas del equipo se generan automáticamente con JS, ver TEAM_CONFIG abajo -->
-                </div>
-            </section>
-
-        </div>
     </div>
 
     <script>
@@ -120,29 +59,13 @@
         //   1.5x la meta, ya es rojo.
         const KPI_CONFIG = [
             { id: 'tareas',       label: 'Tareas',           tipo: 'auto', valor: 85,   meta: 84, unidad: '',  direccion: 'mayor', margenAtencion: 0.95, formato: 'fraccion' },
-            { id: 'desempeno',    label: 'Desempeño',        tipo: 'auto', valor: 98.8, meta: 95, unidad: '%', direccion: 'mayor', margenAtencion: 0.95, formato: 'debajo' },
+            { id: 'desempeno',    label: 'Desempeño',        tipo: 'auto', valor: 99,   meta: 95, unidad: '%', direccion: 'mayor', margenAtencion: 0.95, formato: 'debajo' },
             { id: 'entiempo',     label: 'En Tiempo',        tipo: 'auto', valor: 94,   meta: 90, unidad: '%', direccion: 'mayor', margenAtencion: 0.95, formato: 'debajo' },
             { id: 'retraso',      label: 'Retraso',          tipo: 'auto', valor: 4,    meta: 2,  unidad: '',  direccion: 'menor', margenAtencion: 1.5,  formato: 'debajo', metaPrefijo: '<' },
             { id: 'revisiones',   label: 'Prom. Revisiones', tipo: 'auto', valor: 2,    meta: 2,  unidad: '',  direccion: 'menor', margenAtencion: 1.5,  formato: 'debajo', metaPrefijo: '≤' },
             { id: 'satisfaccion', label: 'Satisfacción',     tipo: 'manual', estado: 'optimo', textoValor: 'Sin datos', textoSub: 'Pendiente' },
             { id: 'urgencias',    label: 'Urgencias',        tipo: 'auto', valor: 2,    meta: 5,  unidad: '',  direccion: 'menor', margenAtencion: 1.5,  formato: 'fraccion' },
         ];
-
-        // ---- 2) Equipo / Carga de trabajo -----------------------------
-        // capacidadMax = puntos que equivalen al 100% de carga.
-        // umbralAlLimite / umbralBajaCarga = % que definen el semáforo.
-        const TEAM_CONFIG = {
-            capacidadMax: 35,
-            umbralAlLimite: 85,   // % en o por encima de esto => rojo "Al Límite"
-            umbralBajaCarga: 40,  // % por debajo de esto => amarillo "Bajo carga"
-            personas: [
-                { id: 'edgar',   nombre: 'Edgar',   puntos: 32 },
-                { id: 'antonio', nombre: 'Antonio', puntos: 20 },
-                { id: 'bere',    nombre: 'Bere',    puntos: 18.5 },
-                { id: 'paco',    nombre: 'Paco',    puntos: 11 },
-                { id: 'kike',    nombre: 'Kike',    puntos: 4 },
-            ]
-        };
 
         // ============================================================
         // MOTOR — no necesitas tocar nada de aquí para abajo.
@@ -187,26 +110,28 @@
             }
 
             const metaTexto = (cfg.metaPrefijo || '') + cfg.meta;
+            const unidadValor = cfg.unidad ? `<span class="ml-1.5">${cfg.unidad}</span>` : '';
+            const unidadMeta = cfg.unidad ? `<span class="ml-1">${cfg.unidad}</span>` : '';
             let valorHTML;
             if (cfg.formato === 'fraccion') {
                 valorHTML = `
                     <div id="valuewrap-${cfg.id}" class="text-2xl font-bold">
-                        <input type="number" step="any" value="${cfg.valor}" data-kpi="${cfg.id}" data-campo="valor"
-                            class="kpi-input bg-gray-700/40 rounded w-16 text-right px-1 focus:outline-none focus:ring-1 focus:ring-indigo-400" />${cfg.unidad}
-                        <span class="text-xs font-normal text-gray-400">/
-                            <input type="number" step="any" value="${cfg.meta}" data-kpi="${cfg.id}" data-campo="meta"
+                        <input type="number" step="1" value="${Math.round(cfg.valor)}" data-kpi="${cfg.id}" data-campo="valor"
+                            class="kpi-input bg-gray-700/40 rounded w-16 text-right px-1 focus:outline-none focus:ring-1 focus:ring-indigo-400" />${unidadValor}
+                        <span class="text-xs font-normal text-gray-400 ml-1.5">/
+                            <input type="number" step="1" value="${Math.round(cfg.meta)}" data-kpi="${cfg.id}" data-campo="meta"
                                 class="kpi-input bg-transparent w-10 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" /> Meta
                         </span>
                     </div>`;
             } else {
                 valorHTML = `
                     <div id="valuewrap-${cfg.id}" class="text-2xl font-bold text-${color}-400">
-                        <input type="number" step="any" value="${cfg.valor}" data-kpi="${cfg.id}" data-campo="valor"
-                            class="kpi-input bg-transparent w-16 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" />${cfg.unidad}
+                        <input type="number" step="1" value="${Math.round(cfg.valor)}" data-kpi="${cfg.id}" data-campo="valor"
+                            class="kpi-input bg-transparent w-16 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" />${unidadValor}
                     </div>
-                    <div class="text-xs text-gray-400">Meta: ${cfg.metaPrefijo || ''}
-                        <input type="number" step="any" value="${cfg.meta}" data-kpi="${cfg.id}" data-campo="meta"
-                            class="kpi-input bg-transparent w-10 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" />${cfg.unidad}
+                    <div class="text-xs text-gray-400 mt-1">Meta: ${cfg.metaPrefijo || ''}
+                        <input type="number" step="1" value="${Math.round(cfg.meta)}" data-kpi="${cfg.id}" data-campo="meta"
+                            class="kpi-input bg-transparent w-10 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" />${unidadMeta}
                     </div>`;
             }
 
@@ -244,70 +169,6 @@
             grid.innerHTML = KPI_CONFIG.map(renderKPICard).join('');
         }
 
-        function calcularEstadoEquipo(pct) {
-            if (pct >= TEAM_CONFIG.umbralAlLimite) return 'accion';
-            if (pct < TEAM_CONFIG.umbralBajaCarga) return 'atencion';
-            return 'optimo';
-        }
-
-        function textoEstadoEquipo(estadoKey) {
-            if (estadoKey === 'accion') return 'Al Límite';
-            if (estadoKey === 'atencion') return 'Bajo carga';
-            return 'Óptimo';
-        }
-
-        function renderTeamRow(persona) {
-            const pct = Math.min(100, Math.round((persona.puntos / TEAM_CONFIG.capacidadMax) * 100));
-            const estadoKey = calcularEstadoEquipo(pct);
-            const color = ESTADOS[estadoKey].color;
-            const texto = textoEstadoEquipo(estadoKey);
-            const pulse = estadoKey === 'accion' ? 'animate-pulse' : '';
-
-            return `
-            <div class="space-y-1.5" id="team-${persona.id}">
-                <div class="flex justify-between text-sm">
-                    <span class="font-medium">${persona.nombre}
-                        <span class="text-xs text-gray-400 ml-2">(
-                            <input type="number" step="any" value="${persona.puntos}" data-team="${persona.id}"
-                                class="team-input bg-transparent w-12 text-gray-400 focus:outline-none border-b border-dashed border-gray-600 focus:border-indigo-400" /> pts)
-                        </span>
-                    </span>
-                    <span id="teamstatus-${persona.id}" class="text-${color}-400 font-semibold flex items-center gap-1.5">
-                        <span class="h-2 w-2 rounded-full bg-${color}-400 ${pulse}"></span> ${pct}% - ${texto}
-                    </span>
-                </div>
-                <div class="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
-                    <div id="teambar-${persona.id}" class="bg-${color}-400 h-2.5 rounded-full transition-all duration-300" style="width:${pct}%"></div>
-                </div>
-            </div>`;
-        }
-
-        function actualizarTeamRow(id) {
-            const persona = TEAM_CONFIG.personas.find(p => p.id === id);
-            if (!persona) return;
-            const pct = Math.min(100, Math.round((persona.puntos / TEAM_CONFIG.capacidadMax) * 100));
-            const estadoKey = calcularEstadoEquipo(pct);
-            const color = ESTADOS[estadoKey].color;
-            const texto = textoEstadoEquipo(estadoKey);
-            const pulse = estadoKey === 'accion' ? 'animate-pulse' : '';
-
-            const statusEl = document.getElementById(`teamstatus-${id}`);
-            if (statusEl) {
-                statusEl.className = `text-${color}-400 font-semibold flex items-center gap-1.5`;
-                statusEl.innerHTML = `<span class="h-2 w-2 rounded-full bg-${color}-400 ${pulse}"></span> ${pct}% - ${texto}`;
-            }
-            const barEl = document.getElementById(`teambar-${id}`);
-            if (barEl) {
-                barEl.className = `bg-${color}-400 h-2.5 rounded-full transition-all duration-300`;
-                barEl.style.width = `${pct}%`;
-            }
-        }
-
-        function renderTeamList() {
-            const list = document.getElementById('team-list');
-            list.innerHTML = TEAM_CONFIG.personas.map(renderTeamRow).join('');
-        }
-
         // Delegación de eventos: escucha cambios en los inputs sin
         // perder el foco al escribir (solo se actualizan colores/textos).
         document.getElementById('kpi-grid').addEventListener('input', (e) => {
@@ -322,19 +183,7 @@
             }
         });
 
-        document.getElementById('team-list').addEventListener('input', (e) => {
-            if (!e.target.matches('.team-input')) return;
-            const id = e.target.dataset.team;
-            const persona = TEAM_CONFIG.personas.find(p => p.id === id);
-            const val = parseFloat(e.target.value);
-            if (persona && !isNaN(val)) {
-                persona.puntos = val;
-                actualizarTeamRow(id);
-            }
-        });
-
         renderKPIGrid();
-        renderTeamList();
     </script>
 </body>
 </html>
