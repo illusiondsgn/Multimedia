@@ -64,13 +64,13 @@
                         <span class="relative flex h-2 w-2">
                             <span class="live-dot absolute inline-flex h-full w-full rounded-full bg-emerald-400"></span>
                         </span>
-                        <span class="text-[11px] font-mono uppercase tracking-[0.25em] text-emerald-400">Monitoreo en vivo</span>
+                        <span class="text-[11px] font-mono uppercase tracking-[0.25em] text-emerald-400">Monitoreo</span>
                     </div>
                     <h1 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-white">Dashboard Multimedia</h1>
                     <p class="text-sm text-gray-400 mt-1 font-mono">Indicadores clave de rendimiento — panel de control</p>
                 </div>
                 <div class="bg-white/[0.04] border border-white/10 px-4 py-2.5 rounded-xl text-sm font-mono text-gray-300 flex items-center gap-2">
-                    <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i> Vista Mensual
+                    <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i> Vista Semanal
                 </div>
             </div>
         </header>
@@ -111,7 +111,7 @@
             { id: 'entiempo',     label: 'En Tiempo',        tipo: 'auto', valor: 94,   meta: 90, unidad: '', direccion: 'mayor', margenAtencion: 0.95, formato: 'debajo' },
             { id: 'retraso',      label: 'Retraso',          tipo: 'auto', valor: 4,    meta: 2,  unidad: '',  direccion: 'menor', margenAtencion: 1.5,  formato: 'debajo', metaPrefijo: '<' },
             { id: 'revisiones',   label: 'Prom. Revisiones', tipo: 'auto', valor: 2,    meta: 2,  unidad: '',  direccion: 'menor', margenAtencion: 1.5,  formato: 'debajo', metaPrefijo: '≤' },
-            { id: 'satisfaccion', label: 'Satisfacción',     tipo: 'manual', estado: 'optimo', textoValor: 'Sin datos', textoSub: 'Pendiente' },
+            { id: 'satisfaccion', label: 'Satisfacción',     tipo: 'auto', valor: 90,   meta: 90, unidad: '', direccion: 'mayor', margenAtencion: 0.95, formato: 'debajo' },
             { id: 'urgencias',    label: 'Urgencias',        tipo: 'auto', valor: 2,    meta: 5,  unidad: '',  direccion: 'menor', margenAtencion: 1.5,  formato: 'fraccion' },
         ];
 
